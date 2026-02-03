@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Be My Valentine? ❤️</title>
+    <title>Valentine's Day Quiz 💕</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap');
         
         :root {
             --primary-pink: #ff6b9d;
@@ -70,108 +70,135 @@
         .container-custom {
             position: relative;
             z-index: 1;
-            padding: 40px 20px;
-            max-width: 1200px;
+            padding: 30px 20px;
+            max-width: 900px;
             margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
-        .header {
-            text-align: center;
-            margin-bottom: 50px;
-            animation: fadeInDown 1s ease;
-        }
-        
-        .header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: white;
-            text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
-            margin-bottom: 15px;
-        }
-        
-        .header p {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.95);
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-        
-        .options-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-            animation: fadeInUp 1s ease 0.3s both;
-        }
-        
-        .option-card {
+        .score-board {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
-            padding: 0;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 20px 30px;
+            margin-bottom: 30px;
+            text-align: center;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            position: relative;
+            animation: fadeInDown 0.6s ease;
         }
         
-        .option-card:hover {
-            transform: translateY(-10px) scale(1.02);
+        .score-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-pink);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .quiz-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 50px 40px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease;
+            position: relative;
+            overflow: hidden;
         }
         
-        .option-card::before {
+        .quiz-container::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
+            height: 6px;
             background: linear-gradient(90deg, var(--primary-pink), var(--accent-purple));
         }
         
-        .card-image {
-            width: 100%;
-            height: 250px;
+        .question-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .question-number {
+            font-size: 1rem;
+            color: var(--accent-purple);
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .question-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--dark-text);
+            font-weight: 700;
+            line-height: 1.4;
+        }
+        
+        .photo-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .photo-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-height: 400px;
             object-fit: cover;
-            display: block;
         }
         
-        .card-content {
-            padding: 25px;
+        .options-container {
+            display: grid;
+            gap: 20px;
+            margin-top: 30px;
         }
         
-        .card-title {
-            font-size: 1.5rem;
+        .option-btn {
+            background: white;
+            border: 3px solid var(--secondary-pink);
+            border-radius: 15px;
+            padding: 25px 30px;
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--dark-text);
-            margin-bottom: 10px;
-            font-family: 'Playfair Display', serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
         }
         
-        .card-description {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.6;
+        .option-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+            border-color: var(--primary-pink);
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(196, 113, 237, 0.1));
         }
         
-        .icon-wrapper {
-            width: 60px;
-            height: 60px;
+        .option-btn::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
             background: linear-gradient(135deg, var(--primary-pink), var(--accent-purple));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 28px;
-            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
-        /* Special photo card */
-        .photo-card .card-image {
-            filter: brightness(1.05);
+        .option-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .option-icon {
+            margin-right: 15px;
+            font-size: 1.3rem;
         }
         
         /* Modal styles */
@@ -199,20 +226,65 @@
             text-align: center;
         }
         
-        .romantic-message {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: var(--primary-pink);
+        .modal-icon {
+            font-size: 4rem;
             margin-bottom: 20px;
-            line-height: 1.5;
         }
         
-        .message-icon {
-            font-size: 4rem;
-            color: var(--primary-pink);
-            margin-bottom: 20px;
-            animation: heartbeat 1.5s infinite;
+        .modal-message {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 15px;
         }
+        
+        .btn-close-white {
+            filter: brightness(0) invert(1);
+        }
+        
+        /* Final poster styles */
+        .final-poster {
+            display: none;
+            text-align: center;
+            animation: fadeInScale 1s ease;
+        }
+        
+        .final-poster.active {
+            display: block;
+        }
+        
+        .poster-heart {
+            font-size: 6rem;
+            animation: heartbeat 1.5s infinite;
+            margin-bottom: 30px;
+        }
+        
+        .poster-message {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: white;
+            font-weight: 700;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+        
+        .kisses-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .kiss {
+            font-size: 2.5rem;
+            animation: kissFloat 2s infinite;
+        }
+        
+        .kiss:nth-child(2) { animation-delay: 0.2s; }
+        .kiss:nth-child(3) { animation-delay: 0.4s; }
+        .kiss:nth-child(4) { animation-delay: 0.6s; }
+        .kiss:nth-child(5) { animation-delay: 0.8s; }
         
         @keyframes heartbeat {
             0%, 100% { transform: scale(1); }
@@ -220,11 +292,11 @@
             20%, 40% { transform: scale(1); }
         }
         
-        .btn-close-white {
-            filter: brightness(0) invert(1);
+        @keyframes kissFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
         
-        /* Animations */
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -247,21 +319,37 @@
             }
         }
         
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.5rem;
+            .quiz-container {
+                padding: 40px 25px;
             }
             
-            .header p {
+            .question-text {
+                font-size: 1.5rem;
+            }
+            
+            .option-btn {
+                padding: 20px 20px;
                 font-size: 1.1rem;
             }
             
-            .options-grid {
-                grid-template-columns: 1fr;
+            .poster-message {
+                font-size: 2rem;
             }
             
-            .romantic-message {
+            .score-text {
                 font-size: 1.5rem;
             }
         }
@@ -272,106 +360,181 @@
     <div class="hearts-background" id="heartsContainer"></div>
     
     <div class="container-custom">
-        <div class="header">
-            <h1>💝 A Special Day For You 💝</h1>
-            <p>Choose what speaks to your heart...</p>
+        <!-- Score Board -->
+        <div class="score-board">
+            <div class="score-text">Score: <span id="scoreValue">0</span>/4</div>
         </div>
         
-        <div class="options-grid">
-            <!-- Option 1: Flowers -->
-            <div class="option-card" onclick="showWrongOption('Flowers')">
-                <div class="card-content">
-                    <div class="icon-wrapper">
-                        <i class="fas fa-rose"></i>
-                    </div>
-                    <h3 class="card-title">Beautiful Flowers</h3>
-                    <p class="card-description">A bouquet of the most stunning roses, picked just for you</p>
+        <!-- Quiz Container -->
+        <div class="quiz-container" id="quizContainer">
+            <!-- Question 1 -->
+            <div class="question" id="question1">
+                <div class="question-header">
+                    <div class="question-number">Question 1 of 4</div>
+                    <h2 class="question-text">When did I fall for you? 💕</h2>
+                </div>
+                <div class="options-container">
+                    <button class="option-btn" onclick="checkAnswer(1, '11 Feb')">
+                        <span class="option-icon">📅</span> 11 Feb
+                    </button>
+                    <button class="option-btn" onclick="checkAnswer(1, '15 Jan')">
+                        <span class="option-icon">📅</span> 15 Jan
+                    </button>
+                    <button class="option-btn" onclick="checkAnswer(1, '28 March')">
+                        <span class="option-icon">📅</span> 28 March
+                    </button>
+                    <button class="option-btn" onclick="checkAnswer(1, 'I don\'t remember')">
+                        <span class="option-icon">🤔</span> I don't remember
+                    </button>
                 </div>
             </div>
             
-            <!-- Option 2: Chocolates -->
-            <div class="option-card" onclick="showWrongOption('Chocolates')">
-                <div class="card-content">
-                    <div class="icon-wrapper">
-                        <i class="fas fa-candy-cane"></i>
-                    </div>
-                    <h3 class="card-title">Sweet Chocolates</h3>
-                    <p class="card-description">Delicious artisan chocolates to sweeten our love</p>
+            <!-- Question 2 -->
+            <div class="question" id="question2" style="display: none;">
+                <div class="question-header">
+                    <div class="question-number">Question 2 of 4</div>
+                    <h2 class="question-text">What is the gift that I bought on first meet? 🎁</h2>
+                </div>
+                <div class="options-container">
+                    <button class="option-btn" onclick="checkAnswer(2, 'Combo')">
+                        <span class="option-icon">🖼️</span> Combo - Image and Flower
+                    </button>
+                    <button class="option-btn" onclick="checkAnswer(2, 'Flower')">
+                        <span class="option-icon">🌹</span> Flower
+                    </button>
+                    <button class="option-btn" onclick="checkAnswer(2, 'Never gifted')">
+                        <span class="option-icon">❌</span> Never gifted
+                    </button>
+                    <button class="option-btn" onclick="checkAnswer(2, 'Chocolates')">
+                        <span class="option-icon">🍫</span> Chocolates
+                    </button>
                 </div>
             </div>
             
-            <!-- Option 3: Our Photo (THE SPECIAL ONE) -->
-            <div class="option-card photo-card" onclick="showRomanticMessage()">
-                <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80" alt="Our Special Moment" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title">Our Special Memory</h3>
-                    <p class="card-description">A moment frozen in time, celebrating our love</p>
+            <!-- Question 3 -->
+            <div class="question" id="question3" style="display: none;">
+                <div class="question-header">
+                    <div class="question-number">Question 3 of 4</div>
+                    <h2 class="question-text">Tell me where do you want to travel next? ✈️</h2>
+                </div>
+                <div class="options-container">
+                    <button class="option-btn" onclick="checkAnswer(3, 'Dang in winter')">
+                        <span class="option-icon">❄️</span> Dang in winter
+                    </button>
+                    <button class="option-btn" onclick="checkAnswer(3, 'Kasol')">
+                        <span class="option-icon">🏔️</span> Kasol
+                    </button>
+                    <button class="option-btn" onclick="checkAnswer(3, 'Diu')">
+                        <span class="option-icon">🏖️</span> Diu
+                    </button>
+                    <button class="option-btn" onclick="checkAnswer(3, 'Goa')">
+                        <span class="option-icon">🌴</span> Goa
+                    </button>
                 </div>
             </div>
             
-            <!-- Option 4: Dinner -->
-            <div class="option-card" onclick="showWrongOption('Romantic Dinner')">
-                <div class="card-content">
-                    <div class="icon-wrapper">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <h3 class="card-title">Romantic Dinner</h3>
-                    <p class="card-description">A candlelit dinner at your favorite restaurant</p>
+            <!-- Question 4 -->
+            <div class="question" id="question4" style="display: none;">
+                <div class="question-header">
+                    <div class="question-number">Question 4 of 4</div>
+                    <h2 class="question-text">Where did we click this photo? 📸</h2>
+                </div>
+                <div class="photo-container">
+                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80" alt="Our special moment">
+                </div>
+                <div class="options-container">
+                    <button class="option-btn" onclick="checkAnswer(4, 'Diu')">
+                        <span class="option-icon">📍</span> Diu
+                    </button>
+                    <button class="option-btn" onclick="checkAnswer(4, 'Udaipur')">
+                        <span class="option-icon">📍</span> Udaipur
+                    </button>
+                    <button class="option-btn" onclick="checkAnswer(4, 'Talala')">
+                        <span class="option-icon">📍</span> Talala
+                    </button>
+                    <button class="option-btn" onclick="checkAnswer(4, 'Junagadh')">
+                        <span class="option-icon">📍</span> Junagadh
+                    </button>
                 </div>
             </div>
             
-            <!-- Option 5: Jewelry -->
-            <div class="option-card" onclick="showWrongOption('Jewelry')">
-                <div class="card-content">
-                    <div class="icon-wrapper">
-                        <i class="fas fa-gem"></i>
-                    </div>
-                    <h3 class="card-title">Sparkling Jewelry</h3>
-                    <p class="card-description">A beautiful piece to match your radiant beauty</p>
+            <!-- Final Question -->
+            <div class="question" id="finalQuestion" style="display: none;">
+                <div class="question-header">
+                    <div class="question-number">Final Question 💝</div>
+                    <h2 class="question-text">Will you be my Valentine?</h2>
+                </div>
+                <div class="options-container">
+                    <button class="option-btn" onclick="checkAnswer(5, 'Yes')" style="border-color: var(--primary-pink); background: rgba(255, 107, 157, 0.1);">
+                        <span class="option-icon">💖</span> Yes
+                    </button>
+                    <button class="option-btn" onclick="checkAnswer(5, 'No')">
+                        <span class="option-icon">💔</span> No
+                    </button>
                 </div>
             </div>
-            
-            <!-- Option 6: Getaway -->
-            <div class="option-card" onclick="showWrongOption('Weekend Getaway')">
-                <div class="card-content">
-                    <div class="icon-wrapper">
-                        <i class="fas fa-plane"></i>
-                    </div>
-                    <h3 class="card-title">Weekend Getaway</h3>
-                    <p class="card-description">An escape to paradise, just the two of us</p>
-                </div>
+        </div>
+        
+        <!-- Final Poster -->
+        <div class="final-poster" id="finalPoster">
+            <div class="poster-heart">❤️</div>
+            <h1 class="poster-message">I Love You</h1>
+            <div class="kisses-container">
+                <span class="kiss">💋</span>
+                <span class="kiss">💋</span>
+                <span class="kiss">💋</span>
+                <span class="kiss">💋</span>
+                <span class="kiss">💋</span>
             </div>
         </div>
     </div>
     
-    <!-- Wrong Option Modal -->
+    <!-- Wrong Answer Modal -->
     <div class="modal fade" id="wrongModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Oops! 💭</h5>
+                    <h5 class="modal-title">Ohhh! 😢</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p style="font-size: 1.2rem; color: #666;">Sorry, this is not the option you have.</p>
-                    <p style="color: #999; margin-top: 15px;">Try again... 💕</p>
+                    <div class="modal-icon">💔</div>
+                    <p class="modal-message">You lost!</p>
+                    <p style="color: #999;">Try to remember... 💭</p>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- Romantic Message Modal -->
-    <div class="modal fade" id="romanticModal" tabindex="-1" aria-hidden="true">
+    <!-- Travel Choice Modal -->
+    <div class="modal fade" id="travelModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">You Found It! 💖</h5>
+                    <h5 class="modal-title">Perfect Choice! ✨</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="message-icon">❤️</div>
-                    <p class="romantic-message">I love you.<br>Will you be my Valentine?</p>
-                    <p style="color: #999; font-size: 1.1rem;">Forever and always... 💕</p>
+                    <div class="modal-icon">✈️</div>
+                    <p class="modal-message" id="travelChoice"></p>
+                    <p style="color: #999;">Let's make it happen! 💕</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- No Valentine Modal -->
+    <div class="modal fade" id="noValentineModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Wait! 😮</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-icon">❌</div>
+                    <p class="modal-message">Sorry, this is not an option!</p>
+                    <p style="color: #999;">You have to say YES! 💕</p>
                 </div>
             </div>
         </div>
@@ -379,6 +542,17 @@
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        let currentQuestion = 1;
+        let score = 0;
+        let travelPreference = '';
+        
+        // Correct answers for each question
+        const correctAnswers = {
+            1: '11 Feb',
+            2: 'Combo',
+            4: 'Diu'  // Update this based on the actual location
+        };
+        
         // Create floating hearts animation
         function createHeart() {
             const heart = document.createElement('div');
@@ -389,39 +563,89 @@
             heart.style.animationDelay = Math.random() * 5 + 's';
             document.getElementById('heartsContainer').appendChild(heart);
             
-            // Remove heart after animation
             setTimeout(() => {
                 heart.remove();
             }, 20000);
         }
         
-        // Create multiple hearts
         for (let i = 0; i < 15; i++) {
             createHeart();
         }
         
-        // Continuously create new hearts
         setInterval(createHeart, 3000);
         
-        // Function to show wrong option modal
-        function showWrongOption(optionName) {
+        // Check answer function
+        function checkAnswer(questionNum, answer) {
+            if (questionNum === 1 || questionNum === 2 || questionNum === 4) {
+                // Questions with correct/wrong answers
+                if (answer === correctAnswers[questionNum]) {
+                    score++;
+                    updateScore();
+                    nextQuestion(questionNum);
+                } else {
+                    showWrongModal();
+                }
+            } else if (questionNum === 3) {
+                // Travel question - all answers are accepted
+                travelPreference = answer;
+                showTravelModal(answer);
+                setTimeout(() => {
+                    nextQuestion(questionNum);
+                }, 2000);
+            } else if (questionNum === 5) {
+                // Final Valentine question
+                if (answer === 'Yes') {
+                    score++;
+                    updateScore();
+                    showFinalPoster();
+                } else {
+                    showNoValentineModal();
+                }
+            }
+        }
+        
+        function updateScore() {
+            document.getElementById('scoreValue').textContent = score;
+        }
+        
+        function nextQuestion(currentQ) {
+            document.getElementById('question' + currentQ).style.display = 'none';
+            
+            if (currentQ === 4) {
+                document.getElementById('finalQuestion').style.display = 'block';
+            } else {
+                document.getElementById('question' + (currentQ + 1)).style.display = 'block';
+            }
+            
+            currentQuestion = currentQ + 1;
+        }
+        
+        function showWrongModal() {
             const modal = new bootstrap.Modal(document.getElementById('wrongModal'));
             modal.show();
         }
         
-        // Function to show romantic message modal
-        function showRomanticMessage() {
-            const modal = new bootstrap.Modal(document.getElementById('romanticModal'));
+        function showTravelModal(choice) {
+            document.getElementById('travelChoice').textContent = 'Ok, got it! ' + choice + ' it is!';
+            const modal = new bootstrap.Modal(document.getElementById('travelModal'));
             modal.show();
-            
-            // Create confetti effect
+        }
+        
+        function showNoValentineModal() {
+            const modal = new bootstrap.Modal(document.getElementById('noValentineModal'));
+            modal.show();
+        }
+        
+        function showFinalPoster() {
+            document.getElementById('quizContainer').style.display = 'none';
+            document.getElementById('finalPoster').classList.add('active');
             createConfetti();
         }
         
         // Confetti effect
         function createConfetti() {
-            const colors = ['#ff6b9d', '#ffc2d1', '#c471ed', '#667eea'];
-            const confettiCount = 100;
+            const colors = ['#ff6b9d', '#ffc2d1', '#c471ed', '#667eea', '#f093fb'];
+            const confettiCount = 150;
             
             for (let i = 0; i < confettiCount; i++) {
                 setTimeout(() => {
@@ -449,6 +673,9 @@
                     animation.onfinish = () => confetti.remove();
                 }, i * 30);
             }
+            
+            // Keep creating confetti
+            setTimeout(() => createConfetti(), 5000);
         }
     </script>
 </body>
